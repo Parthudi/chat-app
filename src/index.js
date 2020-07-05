@@ -71,20 +71,26 @@ io.on('connection', (socket) => {
      
        
 //listener for disconnecting
-        socket.on('disconnect', () => {
+                socket.on('disconnect', () => {
 
-                const user = removeUser(socket.id)
+                        const user = removeUser(socket.id)
+        
+                        if(user) {
+                               
+                                 {
+                                        io.to(user.room).emit('message', generateMessage('Admin', user.username+ ' had left the chat'))
+        
+                                        io.to(user.room).emit('roomData', {
+                                                room: user.room,
+                                                user : getUsersInRoom(user.room)
+                                        })
+        
+                                 }
+                               
+                        }
+                 })
 
-                if(user) {
-
-                        io.to(user.room).emit('message', generateMessage('Admin', user.username+ ' had left the chat'))
-
-                        io.to(user.room).emit('roomData', {
-                                room: user.room,
-                                user : getUsersInRoom(user.room)
-                        })
-                }
-         })
+       
 
 })
 server.listen( port, () => {

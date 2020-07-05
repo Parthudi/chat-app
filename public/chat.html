@@ -29,9 +29,18 @@
                     </div>
 
                  </div>
-
+                    <button class='exiting' onclick="exitFunction()"> Exit </button>
             </div>
 
+               
+           <script>
+               function exitFunction() {
+                   confirm('Are you sure you want to exit??')
+                   if(confirm) {
+                       location.replace('https://parthudi-chatapp.herokuapp.com/')
+                   }
+               }
+           </script>
             <script id='template-message'  type='text/html'>
                     <div class='message'>
                         <p> 
@@ -68,6 +77,6 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
             <script src='/socket.io/socket.io.js'></script>  
             <script src='/javascript/chat.js'></script>
-          
+        
     </body>
 </html>
