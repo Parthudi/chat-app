@@ -11,6 +11,7 @@ const locationbar = document.querySelector('#location')
 const templateMessage  = document.querySelector('#template-message').innerHTML
 const templateLocation = document.querySelector('#template-location').innerHTML
 const sidebarTemplate  = document.querySelector('#slidebar-template').innerHTML
+
 //options
 const {username, room} = Qs.parse(location.search, { ignoreQueryPrefix: true})
 
@@ -39,7 +40,6 @@ const autoScroll = () => {
 }
 
 socket.on('message' , (comein) => {
-    console.log(comein)
 
    const html = Mustache.render(templateMessage, {
         username: comein.username,
@@ -92,8 +92,6 @@ form.addEventListener('submit' , (e) => {
          console.log('message delivered')
      })
  })
-
-
 
 locationbar.addEventListener('click', () => {
 //disable location button

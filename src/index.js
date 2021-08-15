@@ -6,17 +6,26 @@ const socketio = require('socket.io')
 const Filter  = require('bad-words')
 const {generateMessage, generateLocationMessage} = require('./utils/messages')
 const {addUser, removeUser, getUser,  getUsersInRoom} = require('./utils/users')
+const cors = require('cors')
 
 const app = express()                                                                             //this will generate a new application
 const server = http.createServer(app)
 const io = socketio(server)                                    //socket takes only raw http server so we have to refactore express ...
 
-const port = process.env.PORT || 3000 
+const port = process.env.PORT || 5000 
 
 const publicDirectoryPath = path.join(__dirname, '../public') 
 
 app.use(express.static(publicDirectoryPath))
+app.use(cors)
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin' , '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization' );
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+
+    next();
+})
 //server(emit) -> client(receive) -> countUpdated    
 //client(emit) -> server(receive) -> increment     
   //(connection & disconnect) are build in events 
@@ -28,13 +37,12 @@ io.on('connection', (socket) => {
          socket.on('join', ({username, room}, callback )=> {
                 
                 const {error, user} = addUser({ id: socket.id, username, room})
-
+                
                 if(error) {
                         return callback(error)
                 }
                 socket.join(user.room)
-
-                socket.emit('message', generateMessage('Admin', 'Welcome'))
+                socket.emit('message', generateMessage(`${user.room}`, `Welcome, ${user.username} How May I Help You !!`))
         
                  socket.broadcast.to(user.room).emit('message', generateMessage(user.username, user.username+ ' has joined!!') )
 
@@ -64,36 +72,28 @@ io.on('connection', (socket) => {
 
            const user = getUser(socket.id)
 
-           io.to(user.room).emit('locationMessage',  generateLocationMessage( user.username, 'https://google.com/maps?q='+objcapture.latitude+','+objcapture.longitude))
+           io.to(user.room).emit('locationMessage',  generateLocationMessage(user.username, 'https://google.com/maps?q='+objcapture.latitude+','+objcapture.longitude))
            callback('location delivered !!!')
         })
 
-     
-       
 //listener for disconnecting
                 socket.on('disconnect', () => {
-
                         const user = removeUser(socket.id)
         
-                        if(user) {
-                               
-                                 {
-                                        io.to(user.room).emit('message', generateMessage('Admin', user.username+ ' had left the chat'))
+                        if(user) {                               
+                            {
+                                io.to(user.room).emit('message', generateMessage('Admin', user.username+ ' had left the chat'))
         
-                                        io.to(user.room).emit('roomData', {
-                                                room: user.room,
-                                                user : getUsersInRoom(user.room)
-                                        })
-        
-                                 }
-                               
+                                io.to(user.room).emit('roomData', {
+                                        room: user.room,
+                                        user : getUsersInRoom(user.room)
+                                     })
+                                }                    
                         }
                  })
-
-       
-
 })
-server.listen( port, () => {
+
+server.listen( port , () => {
         console.log('server is running on ' +port)
 })
 

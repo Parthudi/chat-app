@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-    background: #6b47b8;
+    background: #b847b8;
 }
 
 button:disabled {
@@ -59,7 +59,7 @@ button:disabled {
 /* Join Page Styles */
 
 .centered-form {
-    background: #333744;
+    background: #c2c192;
     width: 100vw;
     height: 100vh;   
     display: flex;
@@ -68,10 +68,85 @@ button:disabled {
 }
 
 .centered-form__box {
-    box-shadow: 0px 0px 17px 1px #1D1F26;
-    background: #F7F7FA;
+    box-shadow: 0px 0px 17px 1px #3b497a;
+    background: #a1a1c4;
     padding: 24px;
-    width: 250px;
+    height: 22rem;
+    width: 280px;
+}
+
+.doctor1{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor2{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor3{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor4{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor5{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor6{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor7{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+.doctor8{
+    color: darkgoldenrod;
+    padding: 10px;
+}
+
+
+.doctor1:hover{
+    color:darkgreen;
+    cursor: pointer;
+}
+
+.doctor2:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor3:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor4:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor5:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor6:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor7:hover{
+   color:darkgreen;
+   cursor: pointer;
+}
+
+.doctor8:hover{
+   color:darkgreen;
+   cursor: pointer;
 }
 
 .centered-form button {
@@ -165,7 +240,7 @@ button:disabled {
 .room-title {
     font-weight: 400;
     font-size: 22px;
-    background: #2c2f3a;
+    background-color : #762db3;
     padding: 24px;   
 }
 

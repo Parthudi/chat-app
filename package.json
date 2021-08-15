@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bad-words": "^3.0.3",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "socket.io": "^2.3.0"
   },
@@ -12,7 +13,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start" : "node src/index.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "author": "",

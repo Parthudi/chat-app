@@ -1,29 +1,103 @@
-
 <html>
     <head> 
-        <title>  CHAT APP  </title>
-        <link rel='icon' href='./img/favicon.png'>
+        <title> Humans Chatter Box  </title>
+        <link rel='icon' href='./img/LOGOO.ico'>
         <link rel='stylesheet' href='./css/styles.min.css'>
+        <link rel='stylesheet' href='./css/styles.css'>
     </head>
     <body>
-           <div class='centered-form'>
+        <div style="display:flex;">
+            <div class='centered-form__box1' style="width:20vw; background-color: rgb(238, 230, 192); text-align: center; box-shadow: 1px 1px 1px #3b497a; border-radius: 20px;">
+                <h1> DOCTORS </h1> 
+                <p> Only below doctors are registered </p><hr>
+                
+                <ol>
+                    <li class='doctor1' id="doc1" onclick="doc1()"> DR. KAMAL HASAN </li>
+                    <li class='doctor2' id="doc2" onclick="doc2()"> DR. DEVI SHETTY </li>
+                    <li class='doctor3' id="doc3" onclick="doc3()"> DR. NARESH TREHAN </li>
+                    <li class='doctor4' id="doc4" onclick="doc4()"> DR. INDIRA HINDUJA </li>
+                    <li class='doctor5' id="doc5" onclick="doc5()"> DR. KAMINI RAO </li>
+                    <li class='doctor6' id="doc6" onclick="doc6()"> DR. RAMAKANTA PANDA </li>
+                    <li class='doctor7' id="doc7" onclick="doc7()"> DR. DEEPAK CHOPRA </li>
+                    <li class='doctor8' id="doc8" onclick="doc8()"> DR. MOHIT BHANDARI </li>
+                </ol>
 
+            </div>
+           <div class='centered-form' style="width:80vw;">
+             
+            <img src="./img/chatimg.png" alt="chatting">
+            
                <div class='centered-form__box'>
-                    <h1> JOIN </h1>
+                    <h1 style="color:rgb(40, 92, 10)"> JOIN IN </h1>
 
                     <form action='./chat.html'>
-                        <label> Display Name </label>
-                        <input type='text' name='username' placeholder='Display Name' required>
+                        <label style="color: grey"><strong> Your Name </strong></label>
+                        <input type='text' name='username' placeholder='Your Name' required autocomplete="off">
 
-                        <label> Room </label>
-                        <input type='text' name='room' placeholder='Room' required>
+                        <label><strong> Doctor Name </strong></label>
+                        <input type='text' id="doctorName" name='room' placeholder='Doctor Name' required autocomplete="off">
                         <button> JOIN </button>
                     </form>
-
-               </div>
-
+                </div>
            </div>
+        </div>
 
+        <script>
+            const doc1 = () => {
+                const originalDocName = document.querySelector('#doc1').innerHTML;
+                document.querySelector('#doctorName').value = originalDocName;
+            }
 
+            const doc2 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc2').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc3 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc3').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc4 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc4').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc5 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc5').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc6 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc6').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc7 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc7').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+            const doc8 = () => {
+                return new Promise((resolve, reject) => {
+                    const originalDocName = document.querySelector('#doc8').innerHTML;
+                    document.querySelector('#doctorName').value = originalDocName;
+                });    
+            }
+
+        </script>
     </body>
 </html>
+
